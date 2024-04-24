@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout">
+
+<head>
+	<title>Doctor List</title>
+</head>
+
+<body>
+	<div layout:fragment="content" class="row">
+		<div class="row page-list">
+			<h2>
+				Appointments Details
+			</h2>
+			<div class="table-responsive">
+				<table class="table table-striped page-details table-bordered container">
+					<thead class="table-dark">
+						<tr>
+							<th>Doctor</th>
+							<th>Patient</th>
+							<th>Date Time</th>
+							<th>Reason</th>
+							<th>Status</th>
+							<th>Prescription</th>
+							<th>Payment</th>
+
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="data : ${datalist}">
+
+							<td th:text="${data.doctorId}"></td>
+							<td th:text="${data.patientId}"></td>
+							<td th:text="${data.date+' : '+data.time}"></td>
+							<td th:text="${data.reason}"></td>
+							<td th:text="${data.status}"></td>
+							<td th:if="${data.status == 'Completed'}">
+								<a th:href="@{'/patient/appointment/prescribtion/' + ${data.id}}">
+									Prescription
+								</a>
+							</td>
+							<td th:if="${data.status != 'Completed'}"></td>
+							<td th:if="${data.notes == 'UnPaid'}">
+								<a th:href="@{'/staff/payment/' + ${data.id}}">
+									Payment
+								</a>
+							</td>
+							<td th:if="${data.notes == 'Paid'}">
+								Paid
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

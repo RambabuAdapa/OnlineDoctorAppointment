@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout">
+
+<head>
+	<title>Doctor List</title>
+</head>
+
+<body>
+	<div layout:fragment="content" class="row">
+		<div class="row page-list">
+			<h2>
+				Doctor Details 
+			</h2>
+			<div class="table-responsive">
+				<table class="table table-striped page-details table-bordered container">
+					<thead class="table-dark">
+						<tr>
+							<th>Name</th>
+							<th>Phone</th>
+							<th>Email</th>
+							<th>Specialization</th>
+							<th th:if="${session.usertype != 'nurse'}">Manage</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="data : ${datalist}">
+							
+							<td th:text="${data.name}"></td>
+							<td th:text="${data.phone}"></td>
+							<td th:text="${data.email}"></td>
+							<td th:text="${data.special}"></td>
+							<td th:if="${session.usertype != 'nurse'}"><a th:href="@{'/doctor/show/' + ${data.id}}">
+									Manage</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

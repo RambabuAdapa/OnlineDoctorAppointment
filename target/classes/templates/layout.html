@@ -1,0 +1,147 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+	<link rel="stylesheet" th:href="@{/css/gen.css}">
+	<link rel="stylesheet" th:href="@{/css/page.css}">
+	<link rel="stylesheet" th:href="@{/css/aqua.css}">
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+
+	<script type="text/javascript" th:src="@{/js/jquery.js}"></script>
+	<script type="text/javascript" th:src="@{/js/common_jq.js}"></script>
+	<script type="text/javascript" th:src="@{/js/common_js.js}"></script>
+	<script type="text/javascript" th:src="@{/js/ajax_fn.js}"></script>
+	<script type="text/javascript" th:src="@{/js/validate.js}"></script>
+
+	<link href='https://fonts.googleapis.com/css?family=Atomic Age' rel='stylesheet'>
+	<link href='https://fonts.googleapis.com/css?family=Coda' rel='stylesheet'>
+
+</head>
+
+<body>
+	<div class="out_layout">
+		<table width=100% height=100%>
+			<tr height=13% class="print_hide">
+				<td>
+					<div class="header_sess print_hide">
+						<div>
+							<table style="width:100%;">
+								<tr>
+									<td>
+										<h1 style="text-align:center;padding-top:10px;font-family:'Atomic Age'">
+											Doctor Appointment Booking System
+										</h1>
+									</td>
+									<td width=230px><b>Welcome </b>
+										<font color=red><b th:text="${session.name.toUpperCase()}">
+
+											</b></font> | <a href="/logout" tabindex=100>Logout</a>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr height=8% class="print_hide">
+				<td id="menu_bg">
+
+					<div id="container" class="print_hide" th:if="${session.usertype == 'patient'}">
+						<ul>
+							<li><a href="/patient/profile" class="dropdown">Profile</a></li>
+						</ul>
+						<ul>
+							<li><a href="/patient/myappointments" class="dropdown">My Appointments</a></li>
+						</ul>
+						<ul>
+							<li><a href="/patient/appointment" class="dropdown">Fix Appointment</a></li>
+						</ul>
+					</div>
+
+					<div id="container" class="print_hide" th:if="${session.usertype == 'doctor'}">
+
+						<ul>
+							<li><a href="/doctor/profile" class="dropdown">Profile</a></li>
+						</ul>
+						<ul>
+							<li><a href="/doctor/appointments" class="dropdown">Appointments</a></li>
+						</ul>
+						<ul>
+							<li><a href="/slot/create" class="dropdown">Slots</a></li>
+						</ul>
+						<ul>
+							<li><a href="/staff/review/list" class="dropdown">Reviews</a></li>
+						</ul>
+					</div>
+					<div id="container" class="print_hide" th:if="${session.usertype == 'nurse'}">
+
+						<ul>
+							<li><a href="/staff/profile" class="dropdown">Profile</a></li>
+						</ul>
+
+						<ul>
+							<li><a href="/doctor/list" class="dropdown">Doctors</a></li>
+						</ul>
+						<ul>
+							<li><a href="/patient/list" class="dropdown">Patients</a></li>
+						</ul>
+						<ul>
+							<li><a href="/patient/allappointments" class="dropdown">Appointments</a></li>
+						</ul>
+						<ul>
+							<li><a href="/staff/payment/list" class="dropdown">Payments</a></li>
+						</ul>
+						<ul>
+							<li><a href="/staff/review/list" class="dropdown">Reviews</a></li>
+						</ul>
+					</div>
+
+					<div id="container" class="print_hide" th:if="${session.usertype == 'admin'}">
+						<ul>
+							<li><a href="#" class="dropdown">Nurse</a></li>
+							<li class="sublinks">
+								<a href="/staff/create">Add Nurse </a>
+								<a href="/staff/list">Manage</a>
+							</li>
+						</ul>
+						<ul>
+							<li><a href="#" class="dropdown">Doctor</a></li>
+							<li class="sublinks">
+								<a href="/doctor/create">Add Doctor </a>
+								<a href="/doctor/list">Manage</a>
+							</li>
+						</ul>
+						<ul>
+							<li><a href="/patient/list" class="dropdown">Patients</a></li>
+						</ul>
+						<ul>
+							<li><a href="/patient/allappointments" class="dropdown">Appointments</a></li>
+						</ul>
+						<ul>
+							<li><a href="/staff/payment/list" class="dropdown">Payments</a></li>
+						</ul>
+						<ul>
+							<li><a href="/staff/review/list" class="dropdown">Reviews</a></li>
+						</ul>
+
+					</div>
+
+
+
+				</td>
+			</tr>
+			<tr height=72%>
+				<td>
+					<div style="color: red; height: 40px; text-align: center;" th:text="${msg}"></div>
+
+					<div class="content" layout:fragment="content">
+
+
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout">
+
+<head>
+	<title>Prescription</title>
+</head>
+
+<body>
+	<div layout:fragment="content" class="row page-view">
+		<div class="row">
+			<h2>Prescription</h2>
+			<table class="tbl-show table table-bordered">
+				<tr style="background-color: chartreuse;">
+					<th colspan="4">Patient : <span th:text="${patient.name}"></span> Details</th>
+				</tr>
+				<tr style="background-color: chartreuse;">
+					<td>Phone</td>
+					<td th:text="${patient.phone}"></td>
+					<td>Email</td>
+					<td th:text="${patient.email}"></td>
+				</tr>
+				<tr style="background-color: chartreuse;">
+					<td>Address</td>
+					<td th:text="${patient.address}"></td>
+					<td>Gender</td>
+					<td th:text="${patient.gender}"></td>
+				</tr>
+				<tr style="background-color: coral;">
+					<th colspan="4">Doctor : <span th:text="${doctor.name}"></span> Details</th>
+				</tr>
+				<tr style="background-color: coral;">
+					<td>Phone</td>
+					<td th:text="${doctor.phone}"></td>
+					<td>Email</td>
+					<td th:text="${doctor.email}"></td>
+				</tr>
+				<tr style="background-color: coral;">
+					<td>Qualification</td>
+					<td th:text="${doctor.qual}"></td>
+					<td>Specialization</td>
+					<td th:text="${doctor.special}"></td>
+				</tr>
+				<tr style="background-color: rgb(128, 255, 255);">
+					<th colspan="4">Appointment Details</th>
+				</tr>
+				<tr style="background-color: rgb(128, 255, 255);">
+					<td>Date Time</td>
+					<td th:text="${appointment.date +' : '+	appointment.time}"></td>
+					<td>Reason</td>
+					<td th:text="${appointment.reason}"></td>
+				</tr>
+				<tr style="background-color: rgb(255, 255, 128);">
+					<th colspan="4">Prescription</th>
+				</tr>
+				<tr style="background-color: rgb(255, 255, 128);">
+					<td colspan="4" th:text="${prescription.prescription}"></td>
+				</tr>
+
+			</table>
+			
+		</div>
+	</div>
+</body>
+
+</html>

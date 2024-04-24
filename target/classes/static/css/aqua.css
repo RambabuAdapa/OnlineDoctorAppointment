@@ -1,0 +1,129 @@
+input[type=submit], input[type=button], input[type=reset]
+{
+	width:150px;
+	height:30px;
+	margin:20px;
+	border-radius:8px;
+}
+
+input[type=text], input[type=date], input[type=password], select
+{
+	width:200px;
+	height:25px;
+}
+
+.layout
+{
+	width:750px;
+	margin:auto;
+}
+
+.footer {
+	width:94%;
+	height:100%;
+	padding:3px 3%;
+	font-size:14;
+	background-color:rgb(0, 0, 0);
+	color:white;
+        text-align: center;
+}
+
+.footer a {
+	color:white;
+}
+
+.rt {
+	float:right;
+}
+
+.out_layout {
+	width:97%;
+	min-height:500px;
+	background-color:#fafafa;
+	margin:0 auto;
+	-moz-box-shadow:    inset 0 0 10px #cccccc;
+	-webkit-box-shadow: inset 0 0 10px #cccccc;
+	box-shadow:         inset 0 0 10px #cccccc;
+	padding:10px;
+	position:absolute;
+	margin-bottom:2px;
+}
+
+.header, .header_sess {
+	width:100%;
+	height:100%;
+}
+
+.header {
+	background-color:rgb(128, 64, 0);
+}
+
+.header_sess {
+	background-color:rgb(255, 182, 147);
+}
+
+.content 
+{
+	width:100%;
+	height:450px;
+	position:relative;
+	background:url("img/back.jpeg");
+        overflow:auto;
+}
+
+.tbl_lay, .tbl_lay_view
+{
+	margin:auto;
+	border:1px solid rgb(0, 128, 64);
+	padding:10px;
+	margin-top:10px;
+	border-radius:10px;
+}
+
+
+.tbl_lay th, .tbl_lay_view th
+{
+	font-size:20pt;
+	color:white;
+	background-color:rgb(128, 64, 64);
+	margin-bottom:10px;
+}
+
+.tbl_lay_view tr:nth-child(odd)
+{
+	background-color:rgb(245, 155, 255);
+}
+
+#tc
+{
+	text-align:center;
+}
+
+#ulogin, #ilogin{
+  width: 360px;
+  height: 320px;
+  overflow: auto;
+  margin: auto;
+ 
+ }
+ 
+ .green {
+	background-color:#05be05;
+	color:white;
+	font-size:15pt;
+}
+ 
+ .greenlt {
+	background-color:#d5eed5;
+	color:black;
+}
+.red {
+	background-color:#be0505;
+	color:white;
+	font-size:15pt;
+}
+ 
+ .redlt {
+	background-color:#eed5d5;
+	color:black;
+}

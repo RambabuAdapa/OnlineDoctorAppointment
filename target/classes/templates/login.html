@@ -1,0 +1,128 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+	<link rel="stylesheet" th:href="@{/css/aqua.css}" type="text/css" />
+	<link rel="stylesheet" th:href="@{/css/gen.css}" type="text/css">
+	<link href='https://fonts.googleapis.com/css?family=Atomic Age' rel='stylesheet'>
+	<link href='https://fonts.googleapis.com/css?family=Coda' rel='stylesheet'>
+</head>
+
+<body>
+	<div class="out_layout">
+
+		<div style="text-align:center;height:80px ;line-height:80px; font-family:'Atomic Age';background-color:rgb(128, 64, 64);color:white;">
+				<h1>Doctor Appoitnment Booking System</h1>
+		</div>
+		<div style="color: red; height: 40px; text-align: center;" th:text="${msg}"></div>
+
+		<div class="content">
+			<table style="margin: auto;">
+				<tr>
+					<td>
+						<div>
+							<form th:action="@{/login}" th:object="${login}" method="post">
+
+								<fieldset class="greenlt" style="padding: 20px;width: 300px;">
+
+									<table>
+										<tr>
+											<td colspan="3" height="35px"
+												style="background-color: green;text-align: center; font-size:16pt;color: yellow;">
+												Patient Login </td>
+										</tr>
+										<tr >
+											<td width="150px"> User Type </td>
+											<td style="padding:5px">Patient
+												<input type="hidden" value="patient" readonly name="usertype"></td>
+										</tr>
+
+										<tr>
+											<td> User Name </td>
+											<td><input type=text name="username"></td>
+										</tr>
+										<tr>
+											<td> Password </td>
+											<td><input type=password name="password"></td>
+										</tr>
+										<tr>
+											<td colspan=3>
+												<center><input type=submit value=" Login " style="margin:10px auto;">
+												</center>
+											</td>
+										</tr>
+
+										<tr>
+											<td colspan=3 style="text-align:center"> <b>New Patient</b> <a
+													href="/patient/signup">Signup</a> </td>
+										</tr>
+
+
+									</table>
+								</fieldset>
+							</form>
+						</div>
+
+
+					</td>
+					<td width="100px">
+						&nbsp;
+					</td>
+					<td>
+
+						<div>
+							<form th:action="@{/login}" th:object="${login}" method="post">
+
+								<fieldset class="redlt" style="padding: 20px;width: 300px;">
+									<table>
+										<tr>
+											<td colspan="3" height="35px"
+												style="background-color: rgb(188, 71, 37);text-align: center; font-size:16pt;color: yellow;">
+												Staff Login </td>
+										</tr>
+										<tr>
+											<td width="150px"> Staff Type </td>
+											<td><select name="usertype">
+													<option>----select----</option>
+													<option value="admin">Admin</option>
+													<option value="doctor">Doctor</option>
+													<option value="nurse">Nurse</option>
+												</select>
+										</tr>
+
+										<tr>
+											<td> User Name </td>
+											<td><input type=text name="username"></td>
+										</tr>
+										<tr>
+											<td> Password </td>
+											<td><input type=password name="password"></td>
+										</tr>
+										<tr>
+											<td colspan=3>
+												<center><input type=submit value=" Login " style="margin:10px auto;">
+												</center>
+											</td>
+										</tr>
+
+										<tr>
+											<td colspan=3 style="text-align:center"> &nbsp; </td>
+										</tr>
+
+
+									</table>
+								</fieldset>
+							</form>
+						</div>
+
+					</td>
+				</tr>
+			</table>
+
+		</div>
+		
+	</div>
+</body>
+
+</html>

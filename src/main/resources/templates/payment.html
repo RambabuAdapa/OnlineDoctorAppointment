@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout">
+
+<head>
+	<title>Ward List</title>
+</head>
+
+<body>
+	<div layout:fragment="content" class="row">
+		<div class="row page-list">
+			<h2>
+				Payment Details
+			</h2>
+			<div class="table-responsive">
+				<table class="table table-striped page-details table-bordered container">
+					<thead class="table-dark">
+						<tr>
+							<th>Appointment Id</th>
+							<th>Patient Id</th>
+							<th>Amount</th>
+							<th>Payment Type</th>
+							<th>Status</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="data : ${datalist}">
+							
+							<td th:text="${data.appointmentId}"></td>
+							<td th:text="${data.patientId}"></td>
+							<td th:text="${data.amount}"></td>
+							<td th:text="${data.paymentType}"></td>
+							<td th:text="${data.status}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

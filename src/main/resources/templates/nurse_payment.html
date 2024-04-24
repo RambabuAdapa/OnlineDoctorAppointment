@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout">
+
+<head>
+	<title>Edit Doctor Details </title>
+	<style>
+		tr{height: 40px;}
+		
+	</style>
+</head>
+
+<body>
+	<div layout:fragment="content" class="row page-edit">
+		<div class="row">
+			<h2>
+				Payment
+			</h2>
+			<form th:action="@{/staff/payment/update}" th:object="${payment}">
+				<table class="tbl-form" style="width: 400px;">
+					<tr>
+						<td>Appointment Id</td>
+						<td th:text="${obj.appointmentId}" />
+						</td>
+					</tr>
+					<tr>
+						<td>Patient Id</td>
+						<td th:text="${obj.patientId}" />
+						</td>
+					</tr>
+					<tr>
+						<td>Amount</td>
+						<td th:text="${obj.amount}" />
+						</td>
+					</tr>
+					<tr>
+						<td>Payment Mode</td>
+						<td>
+							<select class="form-control" name="paymentType">
+								<option value="Cash">Cash</option>
+								<option value="Debit Card">Debit Card</option>
+								<option value="Credit Card">Credit Card</option>
+								<option value="Net Banking">Net Banking</option>
+							</select>
+						</td>
+					</tr>
+				</table>
+				<br>
+				<input type="hidden" name="id" th:value="${obj._id}" />
+				<button type="submit" class="btn btn-success btn-submit">Submit</button>
+			</form>
+		</div>
+	</div>
+</body>
+
+</html>

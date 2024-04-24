@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout">
+
+<head>
+	<title>Doctor List</title>
+</head>
+
+<body>
+	<div layout:fragment="content" class="row">
+		<div class="row page-list">
+			<h2>
+				Doctor Details
+			</h2>
+			<div class="table-responsive">
+				<table class="table table-striped page-details table-bordered container">
+					<thead class="table-dark">
+						<tr>
+							<th>Name</th>
+							<th>Phone</th>
+							<th>Qualification</th>
+							<th>Specialization</th>
+							<th>Exp</th>
+							<th>Gender</th>
+							<th>Available Slots</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="data : ${datalist}">
+
+							<td th:text="${data.name}"></td>
+							<td th:text="${data.phone}"></td>
+							<td th:text="${data.qual}"></td>
+							<td th:text="${data.special}"></td>
+							<td th:text="${data.experience}"></td>
+							<td th:text="${data.gender}"></td>
+							<td>
+								<form action="/slot/list/available" style="margin:0px !important; display: inline;">
+									<input type="hidden" name="doctorId" th:value="${data.id}" />
+									<input type="date" name="date"  style="margin: 0px;"/>
+									<input type="submit" class="btn btn-danger btn-primary" value="Slots" style="margin:0px"/>
+									
+								</form>
+
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

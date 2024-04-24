@@ -1,0 +1,95 @@
+<html>
+
+<head>
+	<link rel="stylesheet" th:href="@{/css/aqua.css}" type="text/css" />
+	<link rel="stylesheet" th:href="@{/css/gen.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+	<link href='https://fonts.googleapis.com/css?family=Atomic Age' rel='stylesheet'> 
+<link href='https://fonts.googleapis.com/css?family=Coda' rel='stylesheet'>
+	<style>
+		input{
+			height:30px !important;
+		}
+		
+	</style>
+</head>
+
+<body>
+	<div class="out_layout">
+		<table width=100% height=100%>
+			<tr height=13%>
+				<td>
+					<div class="header">
+						<div>
+							<table style="width:100%; height:100%;">
+								<tr height=100%>
+									<td width="100%">
+										<h1 style="text-align:center;padding-top:10px;color:white;font-family:'Atomic Age'">
+											Doctor Appoitnment Booking System
+										</h1>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr height="100%">
+				<td>
+					<div class="content">
+						<div class="row" style="width:700px; margin:auto">
+							<h2 style="color:blue; text-align:center">
+								Patient Signup
+							</h2>
+
+							<form th:action="@{/patient/signup}" th:object="${patient}" method="post">
+								<table class="tbl-form">
+									<tr>
+										<td>Name</td>
+										<td><input type="text" class="form-control" name="name" required /></td>
+										<td width="50px"> &nbsp; </td>
+										<td>Phone</td>
+										<td><input type="tel" class="form-control" name="phone" required /></td>
+									</trheight=>
+									<tr>
+										<td>Email</td>
+										<td><input type="email" class="form-control" name="email" required /></td>
+										<td></td>
+										<td>Gender</td>
+										<td>
+											<input type="radio" class="form-check-input" name="gender" value="male" />
+											Male
+											&nbsp; &nbsp; &nbsp; &nbsp;
+											<input type="radio" class="form-check-input" name="gender" value="female" />
+											Female
+										</td>
+									</tr>
+
+									<tr>
+										<td rowspan="2">Address</td>
+										<td rowspan="2"><textarea class="form-control" name="address" cols="25" rows="3"
+												required></textarea></td>
+										<td rowspan="2"></td>
+										<td>Username</td>
+										<td><input type="text" class="form-control" name="username" /></td>
+									</tr>
+									<tr>
+										<td>Password</td>
+										<td><input type="password" class="form-control" name="password" required /></td>
+									</tr>
+								</table>
+								<br><br>
+								<center>
+									<button type="submit" class="btn btn-success btn-submit">Submit</button>
+								</center>
+							</form>
+						</div>
+					</div>
+				</td>
+			</tr>
+			
+		</table>
+	</div>
+</body>
+
+</html>

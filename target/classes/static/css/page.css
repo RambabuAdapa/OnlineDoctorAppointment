@@ -1,0 +1,107 @@
+#ulogin, #ilogin, #home, #admin_branch, #rep_sales, #ac_closing_entry, #billing, #stock_entry, #new_prod , #service_entry, #access_entry, #expense_entry, #incash_entry, #feedback, #recharge, .report, .service_layout_edit{
+  overflow: auto;
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+}
+
+
+#stock_entry {
+	width:650px;
+	height:400px;
+}
+
+#stock_entry table tr td{
+	padding: 5px 0;
+}
+
+#stock_entry select, #new_prod  select, #access_entry select, #incash_entry select, #expense_entry select{
+	width:156px;
+}
+
+#new_prod {
+	width:750px;
+	height:350px;
+}
+
+#recharge {
+	width:350px;
+	height:250px;
+}
+
+#feedback{
+	width:550px;
+	height:350px;
+}
+
+#access_entry {
+	width:400px;
+	height:400px;
+}
+
+#expense_entry {
+	width:500px;
+	height:350px;
+}
+
+#incash_entry {
+	width:500px;
+	height:400px;
+}
+#service_entry {
+	width:450px;
+	height:450px;
+}
+
+#ac_closing_entry {
+	width:610px;
+}
+
+#bill_w, #bill_wo	{
+	width:200px;
+	border:1px solid black;
+	float:left;
+	margin-right:10px;
+	text-align:center;
+	padding:3px;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+	margin-bottom:10px;
+}
+
+.glow {
+	background-color:#00ff00;
+	color:black;
+
+}
+
+.blur {
+	background-color:#a3a3a3;
+	color:white;
+	cursor:hand;
+}
+
+#service_rep 
+{
+	border-collapse:collapse;
+}
+
+#service_rep th,#for_pass th
+{
+	background-color:#777;
+	color:#fff;
+	height:40px;
+}
+
+#service_rep td
+{
+	border:1px solid black;
+	text-indent:5px;
+}
+#for_pass
+{
+	margin:auto;
+	margin-top:150px;
+	border:1px solid blue;
+}
