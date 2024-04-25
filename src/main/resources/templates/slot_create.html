@@ -82,7 +82,7 @@
 
 
 				<a th:href="@{'/slot/delete/' + ${data.id}}" class="btn "
-					th:classappend="${data.status=='Booked'} ? 'btn-success' : 'btn-danger'">
+					th:classappend="${data.status=='Booked'} ? 'btn-success' : 'btn-danger'"  onclick="return confirm('Are you sure want to delete?');">
 					<span th:text="${data.time}"></span>
 				</a>
 			</div>

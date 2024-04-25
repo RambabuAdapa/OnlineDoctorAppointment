@@ -48,6 +48,7 @@ public class SlotController {
 			if(slotRepo.findAllByDoctorIdAndDateAndTime(docId,obj.getDate(), obj.getTime()).isEmpty())
 			{
 			obj.setDoctorId(docId);
+			obj.setStatus("Available");
 			slotRepo.save(obj);		
 			}
 			else
@@ -65,7 +66,7 @@ public class SlotController {
 	        Slot obj = slotRepo.findById(id).get();
 	        System.out.println(obj);
 	        
-	        if(obj.getStatus().equals("Available"))
+	        if(obj.getStatus()==null || obj.getStatus().equals("Available") )
 	        	slotRepo.delete(obj);
 	        else
 	        	model.addAttribute("msg","Appointment fixed slots cant be deleted, please cancel the appointment");
@@ -86,40 +87,6 @@ public class SlotController {
 
 	        return "pat_appointment_slots";
 	    }
-		
-	
-		/*	
-		@RequestMapping("/list")
-	    public String home(@RequestParam String doctorId, @RequestParam String date, Model model, HttpServletRequest request) {
-	        model.addAttribute("datalist", slotRepo.findAllByDoctorIdAndDate(doctorId,date));
-	        model.addAttribute("obj", docRepo.findById(doctorId).get());
-			model.addAttribute("date", date);
-
-	        return "pat_appointment_slots";
-	    }
-
-
-
-	@RequestMapping("/show/{id}")
-	public String show(@PathVariable String id, Model model, HttpServletRequest request) {
-		model.addAttribute("obj",slotRepo.findById(id).get());
-		return "staff_show";
-	}
-	
-	
-	    @RequestMapping("/edit/{id}")
-	    public String edit(@PathVariable String id, Model model) {
-	    	model.addAttribute("obj", repo.findById(id).get());
-	        return "staff_edit";
-	    }
-	    
-	    
-	    @RequestMapping("/update")
-	    public String update(Nurse obj) {
-	        repo.save(obj);
-	        return "redirect:/staff/show/" + obj.getId();
-	    }
-*/
 
 	
 }
