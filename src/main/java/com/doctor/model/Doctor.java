@@ -8,8 +8,13 @@ public class Doctor {
 
 	@Id
 	String id;
-	String name;
+	String firstName;
+	String lastName;
 	String address;
+	String city;
+
+	String state;
+	String zip;
 	String phone;
 	String email;
 	String gender;
@@ -18,16 +23,26 @@ public class Doctor {
 	String special;
 	String username;
 	String password;
+	boolean isFirstLogin = true;
 	public Doctor() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Doctor(String id, String name, String address, String phone, String email, String gender, String qual,
-			String experience, String special,  String username, String password) {
+
+	
+	
+
+	public Doctor(String id, String firstName, String lastName, String address, String city, String state, String zip,
+			String phone, String email, String gender, String qual, String experience, String special, String username,
+			String password, boolean isFirstLogin) {
 		super();
 		this.id = id;
-		this.name = name;
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.address = address;
+		this.city = city;
+		this.state = state;
+		this.zip = zip;
 		this.phone = phone;
 		this.email = email;
 		this.gender = gender;
@@ -36,18 +51,22 @@ public class Doctor {
 		this.special = special;
 		this.username = username;
 		this.password = password;
+		this.isFirstLogin = isFirstLogin;
 	}
+
+
+
 	public String getId() {
 		return id;
 	}
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name;
+	public String getFirstName() {
+		return firstName;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 	public String getAddress() {
 		return address;
@@ -104,7 +123,45 @@ public class Doctor {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public String getZip() {
+		return zip;
+	}
+
+	public void setZip(String zip) {
+		this.zip = zip;
+	}
+
+	public boolean isFirstLogin() {
+		return isFirstLogin;
+	}
+
+	public void setFirstLogin(boolean isFirstLogin) {
+		this.isFirstLogin = isFirstLogin;
+	}
 
 	
 }

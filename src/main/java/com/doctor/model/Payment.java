@@ -10,6 +10,16 @@ public class Payment {
 	String _id;
 	String appointmentId;
 	String patientId;
+	String patientName;
+
+	public String getPatientName() {
+		return patientName;
+	}
+
+	public void setPatientName(String patientName) {
+		this.patientName = patientName;
+	}
+
 	String amount;
 	String paymentType;
 	String status;

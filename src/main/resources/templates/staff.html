@@ -16,7 +16,8 @@
 				<table class="table table-striped page-details table-bordered container">
 					<thead class="table-dark">
 						<tr>
-							<th>Name</th>
+							<th>First Name</th>
+							<th>Last Name</th>
 							<th>Phone</th>
 							<th>Email</th>
 							<th>Manage</th>
@@ -26,7 +27,8 @@
 					<tbody>
 						<tr th:each="data : ${datalist}">
 							
-							<td th:text="${data.name}"></td>
+							<td th:text="${data.firstName}"></td>
+							<td th:text="${data.lastName}"></td>
 							<td th:text="${data.phone}"></td>
 							<td th:text="${data.email}"></td>
 							<td><a th:href="@{'/staff/show/' + ${data.id}}">

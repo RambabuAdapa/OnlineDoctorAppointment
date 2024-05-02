@@ -1,9 +1,13 @@
 package com.doctor.controller;
 
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.doctor.model.SlotPeriod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,22 +45,45 @@ public class SlotController {
 	}
 	
 	@RequestMapping("/save")
-	public String save(Slot obj, Model model, HttpServletRequest req){
+	public String save(SlotPeriod obj, Model model, HttpServletRequest req){
 		String docId = req.getSession().getAttribute("id").toString();
-		if(obj.getTime()!="")
+		if(obj.getFromTime()!="" && obj.getToTime()!="")
 		{
-			if(slotRepo.findAllByDoctorIdAndDateAndTime(docId,obj.getDate(), obj.getTime()).isEmpty())
-			{
-			obj.setDoctorId(docId);
-			obj.setStatus("Available");
-			slotRepo.save(obj);		
-			}
-			else
-				model.addAttribute("msg","This slot already exists");
+			List<String> slots = generateTimeIntervals(obj.getFromTime(), obj.getToTime());
+
+			slots.forEach(slot->{
+				if(slotRepo.findAllByDoctorIdAndDateAndTime(docId,obj.getDate(), slot).isEmpty())
+				{
+					Slot slot1 = new Slot();
+					slot1.setDoctorId(docId);
+					slot1.setStatus("Available");
+					slot1.setDate(obj.getDate());
+					slot1.setTime(slot);
+					slotRepo.save(slot1);
+				}else {
+					model.addAttribute("msg","This slot already exists");
+				}
+			});
+
 		}
 		model.addAttribute("datalist", slotRepo.findAllByDoctorIdAndDate(docId,obj.getDate()));
 		model.addAttribute("date",obj.getDate());
 		return "slot_create";
+	}
+
+	public static List<String> generateTimeIntervals(String startTime, String endTime) {
+		List<String> intervals = new ArrayList<>();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+
+		LocalTime start = LocalTime.parse(startTime, formatter);
+		LocalTime end = LocalTime.parse(endTime, formatter);
+
+		while (start.isBefore(end)) {
+			intervals.add(start.format(formatter));
+			start = start.plusMinutes(30);
+		}
+
+		return intervals;
 	}
 	
 	 @RequestMapping("/delete/{id}")

@@ -62,6 +62,7 @@ public class NurseController {
 	
 	@RequestMapping("/save")
 	public String save(Nurse obj){
+		System.out.println(obj);
 		repo.save(obj);		
 		return "redirect:/staff/list";
 	}
@@ -111,6 +112,8 @@ public class NurseController {
 	    @RequestMapping("/payment/{id}")
 	    public String payment(@PathVariable String id, Model model, HttpServletRequest req) {
 	        Payment obj = payRepo.findByAppointmentId(id);
+
+
 	        model.addAttribute("obj", obj);
 	        return "nurse_payment";
 	    }
@@ -124,6 +127,7 @@ public class NurseController {
 	        payRepo.save(obj);
 	        
 	        Appointment apt = aptRepo.findById(obj.getAppointmentId()).get();
+			apt.setStatus("Checked");
 	        apt.setNotes("Paid");
 	        aptRepo.save(apt);
 	        return "redirect:/patient/allappointments";
@@ -146,7 +150,7 @@ public class NurseController {
 
 			List<Review> newList = new ArrayList<>();
 			for (Review obj : list) {
-				obj.setDoctorId(docRepo.findById(obj.getDoctorId()).get().getName());
+				obj.setDoctorId(docRepo.findById(obj.getDoctorId()).get().getFirstName());
 				obj.setPatientId(patRepo.findById(obj.getPatientId()).get().getName());
 				newList.add(obj);
 			}

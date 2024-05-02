@@ -20,55 +20,55 @@
 		<div class="content">
 			<table style="margin: auto;">
 				<tr>
-					<td>
-						<div>
-							<form th:action="@{/login}" th:object="${login}" method="post">
+<!--					<td>-->
+<!--						<div>-->
+<!--							<form th:action="@{/login}" th:object="${login}" method="post">-->
 
-								<fieldset class="greenlt" style="padding: 20px;width: 300px;">
+<!--								<fieldset class="greenlt" style="padding: 20px;width: 300px;">-->
 
-									<table>
-										<tr>
-											<td colspan="3" height="35px"
-												style="background-color: green;text-align: center; font-size:16pt;color: yellow;">
-												Patient Login </td>
-										</tr>
-										<tr >
-											<td width="150px"> User Type </td>
-											<td style="padding:5px">Patient
-												<input type="hidden" value="patient" readonly name="usertype"></td>
-										</tr>
+<!--									<table>-->
+<!--										<tr>-->
+<!--											<td colspan="3" height="35px"-->
+<!--												style="background-color: green;text-align: center; font-size:16pt;color: yellow;">-->
+<!--												Patient Login </td>-->
+<!--										</tr>-->
+<!--										<tr >-->
+<!--											<td width="150px"> User Type </td>-->
+<!--											<td style="padding:5px">Patient-->
+<!--												<input type="hidden" value="patient" readonly name="usertype"></td>-->
+<!--										</tr>-->
 
-										<tr>
-											<td> User Name </td>
-											<td><input type=text name="username"></td>
-										</tr>
-										<tr>
-											<td> Password </td>
-											<td><input type=password name="password"></td>
-										</tr>
-										<tr>
-											<td colspan=3>
-												<center><input type=submit value=" Login " style="margin:10px auto;">
-												</center>
-											</td>
-										</tr>
+<!--										<tr>-->
+<!--											<td> User Name </td>-->
+<!--											<td><input type=text name="username"></td>-->
+<!--										</tr>-->
+<!--										<tr>-->
+<!--											<td> Password </td>-->
+<!--											<td><input type=password name="password"></td>-->
+<!--										</tr>-->
+<!--										<tr>-->
+<!--											<td colspan=3>-->
+<!--												<center><input type=submit value=" Login " style="margin:10px auto;">-->
+<!--												</center>-->
+<!--											</td>-->
+<!--										</tr>-->
 
-										<tr>
-											<td colspan=3 style="text-align:center"> <b>New Patient</b> <a
-													href="/patient/signup">Signup</a> </td>
-										</tr>
-
-
-									</table>
-								</fieldset>
-							</form>
-						</div>
+<!--										<tr>-->
+<!--											<td colspan=3 style="text-align:center"> <b>New Patient</b> <a-->
+<!--													href="/patient/signup">Signup</a> </td>-->
+<!--										</tr>-->
 
 
-					</td>
-					<td width="100px">
-						&nbsp;
-					</td>
+<!--									</table>-->
+<!--								</fieldset>-->
+<!--							</form>-->
+<!--						</div>-->
+
+
+<!--					</td>-->
+<!--					<td width="100px">-->
+<!--						&nbsp;-->
+<!--					</td>-->
 					<td>
 
 						<div>
@@ -79,15 +79,16 @@
 										<tr>
 											<td colspan="3" height="35px"
 												style="background-color: rgb(188, 71, 37);text-align: center; font-size:16pt;color: yellow;">
-												Staff Login </td>
+												Login </td>
 										</tr>
 										<tr>
-											<td width="150px"> Staff Type </td>
+											<td width="150px"> User Type </td>
 											<td><select name="usertype">
 													<option>----select----</option>
 													<option value="admin">Admin</option>
 													<option value="doctor">Doctor</option>
 													<option value="nurse">Nurse</option>
+													<option value="patient">Patient</option>
 												</select>
 										</tr>
 
@@ -107,7 +108,8 @@
 										</tr>
 
 										<tr>
-											<td colspan=3 style="text-align:center"> &nbsp; </td>
+											<td colspan=3 style="text-align:center"> <b>New Patient</b> <a
+												href="/patient/signup">Signup</a> </td>
 										</tr>
 
 

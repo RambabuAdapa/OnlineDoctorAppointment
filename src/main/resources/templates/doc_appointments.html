@@ -43,7 +43,7 @@
 							<td th:if="${data.status == 'Cancelled'}">Cancelled</td>
 							
 							<td th:if="${data.status == 'Cancelled'}"></td>
-							<td th:if="${data.status == 'Booked'}"><a th:href="@{'/doctor/appointment/prescribe/' + ${data.id}}">
+							<td th:if="${data.status == 'Checked'}"><a th:href="@{'/doctor/appointment/prescribe/' + ${data.id}}">
 							Prescribe</a></td>
 							<td th:if="${data.status == 'Completed'}"><a th:href="@{'/patient/appointment/prescribtion/' + ${data.id}}">
 							Prescription</a></td>

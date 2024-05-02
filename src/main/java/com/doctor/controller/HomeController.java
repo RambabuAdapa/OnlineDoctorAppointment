@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.doctor.model.Admin;
@@ -84,6 +85,7 @@ public class HomeController {
 				return "redirect:/login";
 			}
 		} else if (login.getUsertype().equals("patient")) {
+			
 			Optional<Patient> obj = patRepo.findByUsernameAndPassword(login.getUsername(), login.getPassword());
 
 			if (obj.isPresent()) {
@@ -96,14 +98,19 @@ public class HomeController {
 				rm.addFlashAttribute("msg", "Invalid User Credentials");
 				return "redirect:/invalid";
 			}
+			
 		} else if (login.getUsertype().equals("doctor")) {
 			Optional<Doctor> obj = docRepo.findByUsernameAndPassword(login.getUsername(), login.getPassword());
 
 			if (obj.isPresent()) {
 				request.getSession().setAttribute("id", obj.get().getId());
 				request.getSession().setAttribute("usertype", "doctor");
-				request.getSession().setAttribute("name", obj.get().getName());
-				return "home";
+				request.getSession().setAttribute("name", obj.get().getFirstName());
+				
+				if(obj.get().isFirstLogin()) 
+					return "password_reset";
+				else
+					return "home";
 			} else
 			{
 				rm.addFlashAttribute("msg", "Invalid Doctor Credentials");
@@ -115,8 +122,13 @@ public class HomeController {
 			if (obj.isPresent()) {
 				request.getSession().setAttribute("id", obj.get().getId());
 				request.getSession().setAttribute("usertype", "nurse");
-				request.getSession().setAttribute("name", obj.get().getName());
-				return "home";
+				request.getSession().setAttribute("name", obj.get().getFirstName());
+				
+				if(obj.get().isFirstLogin()) 
+					return "password_reset";
+				else
+					return "home";
+				
 			} else {
 				rm.addFlashAttribute("msg", "Invalid Nurse Credentials");
 				return "redirect:/invalid";
@@ -125,6 +137,33 @@ public class HomeController {
 			rm.addFlashAttribute("msg", "User Type must be selected");
 			return "redirect:/login";
 		}
+	}
+
+	
+	@RequestMapping("/reset")
+	public String reset(@RequestParam String password, RedirectAttributes rm, HttpServletRequest req) {
+		
+		String id = (String) req.getSession().getAttribute("id");
+		String utype = (String) req.getSession().getAttribute("usertype");
+		if(utype.equals("doctor"))
+		{
+			Doctor obj = docRepo.findById(id).get();
+			obj.setPassword(password);
+			obj.setFirstLogin(false);
+			docRepo.save(obj);
+
+		}
+		else if(utype.equals("nurse"))
+		{
+			Nurse obj = stfRepo.findById(id).get();
+			obj.setPassword(password);
+			obj.setFirstLogin(false);
+			stfRepo.save(obj);
+		}
+				
+		req.getSession().invalidate();
+		rm.addFlashAttribute("msg", "Password Reset Successful");
+		return "redirect:/login";
 	}
 
 }

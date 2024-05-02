@@ -8,30 +8,36 @@ public class Nurse {
 
 	@Id
 	String id;
-	String name;
+	String firstName;
+	String lastName;
 	String address;
+	String city;
+	String state;
+	String zip;
 	String phone;
 	String email;
 	String gender;
-	String salary;
+	String ssn;
 	String username;
 	String password;
-	public Nurse(String id, String name, String address, String phone, String email, String gender, String salary,
-			String username, String password) {
+	boolean isFirstLogin = true;
+	public Nurse(String id, String firstName, String lastName, String address, String city, String state, String zip,
+			String phone, String email, String gender, String ssn, String username, String password) {
 		super();
 		this.id = id;
-		this.name = name;
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.address = address;
+		this.city = city;
+		this.state = state;
+		this.zip = zip;
 		this.phone = phone;
 		this.email = email;
 		this.gender = gender;
-		this.salary = salary;
+		this.ssn = ssn;
 		this.username = username;
 		this.password = password;
-	}
-	public Nurse() {
-		super();
-		// TODO Auto-generated constructor stub
+		this.isFirstLogin = true;
 	}
 	public String getId() {
 		return id;
@@ -39,17 +45,41 @@ public class Nurse {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name;
+	public String getFirstName() {
+		return firstName;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 	public String getAddress() {
 		return address;
 	}
 	public void setAddress(String address) {
 		this.address = address;
+	}
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
+	}
+	public String getZip() {
+		return zip;
+	}
+	public void setZip(String zip) {
+		this.zip = zip;
 	}
 	public String getPhone() {
 		return phone;
@@ -69,11 +99,11 @@ public class Nurse {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	public String getSalary() {
-		return salary;
+	public String getSsn() {
+		return ssn;
 	}
-	public void setSalary(String salary) {
-		this.salary = salary;
+	public void setSsn(String ssn) {
+		this.ssn = ssn;
 	}
 	public String getUsername() {
 		return username;
@@ -87,11 +117,19 @@ public class Nurse {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public boolean isFirstLogin() {
+		return isFirstLogin;
+	}
+	public void setFirstLogin(boolean isFirstLogin) {
+		this.isFirstLogin = isFirstLogin;
+	}
 	@Override
 	public String toString() {
-		return "Nurse [id=" + id + ", name=" + name + ", address=" + address + ", phone=" + phone + ", email=" + email
-				+ ", gender=" + gender + ", salary=" + salary + ", username=" + username + ", password=" + password
-				+ "]";
+		return "Nurse [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", address=" + address
+				+ ", city=" + city + ", state=" + state + ", zip=" + zip + ", phone=" + phone + ", email=" + email
+				+ ", gender=" + gender + ", ssn=" + ssn + ", username=" + username + ", password=" + password
+				+ ", isFirstLogin=" + isFirstLogin + "]";
 	}
 	
+
 }

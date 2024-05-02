@@ -3,6 +3,7 @@ package com.doctor.controller;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -45,9 +46,9 @@ public class DoctorController {
 	
 	@Autowired
 	PrescriptionRepository preRepo;
-	
-	@Autowired
-	PaymentRepository payRepo;
+//
+//	@Autowired
+//	PaymentRepository payRepo;
 	
 	
 	@RequestMapping("/list")
@@ -115,6 +116,9 @@ public class DoctorController {
 		
 		List<Appointment> list = aptRepo.findAllByDoctorIdOrderByIdDesc(req.getSession().getAttribute("id").toString());
 
+//		List<Appointment> newList = list.stream()
+//				.filter(apt -> !apt.getStatus().equals("Booked"))
+//				.collect(Collectors.toList());
 		List<Appointment> newList = new ArrayList<>();
 		for(Appointment obj: list) {
 			obj.setPatientId(patRepo.findById(obj.getPatientId()).get().getName());
@@ -143,22 +147,12 @@ public class DoctorController {
 	}
 
 	@PostMapping("/appointment/prescribe")
-	public String save(Prescription obj, @RequestParam String amount) {
+	public String save(Prescription obj) {
 		preRepo.save(obj);
-		
-		System.out.println(amount);
 		
 		Appointment apt = aptRepo.findById(obj.getAppointmentId()).get();
 		apt.setStatus("Completed");
-		apt.setNotes("UnPaid");
 		aptRepo.save(apt);
-		
-		Payment pmt = new Payment();
-		pmt.setAmount(amount);
-		pmt.setAppointmentId(obj.getAppointmentId());
-		pmt.setPatientId(obj.getPatientId());
-		pmt.setStatus("UnPaid");
-		payRepo.save(pmt);
 		
 		return "redirect:/doctor/appointments";
 	}

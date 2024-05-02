@@ -16,16 +16,16 @@
 			<form th:action="@{/staff/save}" th:object="${staff}">
 				<table class="tbl-form">
 					<tr>
-						<td>Name</td>
-						<td><input type="text" class="form-control" name="name" required /></td>
+						<td>FirstName</td>
+						<td><input type="text" class="form-control" name="firstName" required /></td>
 					<td width="50px"> &nbsp; </td >
 						<td>Phone</td>
 						<td><input type="tel" class="form-control" name="phone"  required/></td>
 					</tr>
 					<tr>
-						<td>Email</td>
-						<td><input type="email" class="form-control" name="email" required /></td>
-					<td></td>
+						<td>LastName</td>
+						<td><input type="text" class="form-control" name="lastName" required /></td>
+						<td></td>
 						<td>Gender</td>
 						<td>
 							<input type="radio" class="form-check-input" name="gender" value="male" /> Male
@@ -33,11 +33,15 @@
 							<input type="radio" class="form-check-input" name="gender" value="female" /> Female
 						</td>
 					</tr>
-
-					
 					<tr>
-						<td>Salary</td>
-						<td><input type="text" class="form-control" name="salary" /></td>
+						<td>Email</td>
+						<td><input type="email" class="form-control" name="email" required /></td>
+
+					</tr>
+
+					<tr>
+						<td>SSN</td>
+						<td><input type="text" class="form-control" name="ssn" /></td>
 					</tr>
 					
 					<tr>
@@ -50,6 +54,17 @@
 					<tr>
 						<td>Password</td>
 						<td><input type="password" class="form-control" name="password" required/></td>
+					</tr>
+					<tr>
+						<td>State</td>
+						<td><input type="text" class="form-control" name="state" required /></td>
+						<td width="50px"> &nbsp; </td >
+						<td>Confirm Password</td>
+						<td><input type="text" class="form-control" name="confirm" required /></td>
+					</tr>
+					<tr>
+						<td>ZipCode</td>
+						<td><input type="tel" class="form-control" name="zip"  required/></td>
 					</tr>
 				</table>
 				<button type="submit" class="btn btn-success btn-submit">Save</button>

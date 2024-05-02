@@ -11,7 +11,7 @@
         <div layout:fragment="content" class="row page-view">
             <div class="row">
                 <h2>
-                	Nurse : <span th:text="${obj.name}" ></span> Details 
+                	Nurse : <span th:text="${obj.firstName}" ></span> Details
                 </h2>
                 
                 <table class="tbl-show table table-bordered ">
@@ -19,7 +19,7 @@
                 	<tr><td>Email</td><td th:text="${obj.email}"></td ></tr>
                 	<tr><td>Address</td><td th:text="${obj.address}"></td ></tr>
                 	<tr><td>Gender</td><td th:text="${obj.gender}"></td ></tr>
-                	<tr><td>Salary</td><td th:text="${obj.salary}"></td ></tr>
+                	<tr><td>Salary</td><td th:text="${obj.ssn}"></td ></tr>
                 </table >
 
                 <form action="/staff/delete">

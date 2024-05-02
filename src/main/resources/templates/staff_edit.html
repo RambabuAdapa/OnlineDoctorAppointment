@@ -16,43 +16,57 @@
 			<form th:action="@{/staff/update}" th:object="${staff}">
 				<table class="tbl-form">
 					<tr>
-						<td>Name</td>
-						<td><input type="text" class="form-control" name="name" th:value="${obj.name}" /></td>
+						<td>FirstName</td>
+						<td><input type="text" class="form-control" name="firstName" th:value="${obj.firstName}" /></td>
 						<td width="50px"> &nbsp; </td >
 						<td>Phone</td>
-						<td><input type="text" class="form-control" name="phone" th:value="${obj.phone}" /></td>
+						<td><input type="tel" class="form-control" name="phone" th:value="${obj.phone}" /></td>
 					</tr>
 					<tr>
-						<td>Email</td>
-						<td><input type="text" class="form-control" name="email" th:value="${obj.email}" /></td>
-					<td></td>
+						<td>LastName</td>
+						<td><input type="text" class="form-control" name="lastName"  th:value="${obj.lastName}" /></td>
+						<td></td>
 						<td>Gender</td>
 						<td>
 							<input type="radio" class="form-check-input" name="gender" value="male"
-								th:checked="${obj.gender == 'male'}" /> Male
+								   th:checked="${obj.gender == 'male'}"/> Male
 							&nbsp; &nbsp; &nbsp; &nbsp;
 							<input type="radio" class="form-check-input" name="gender" value="female"
-								th:checked="${obj.gender == 'female'}" /> Female
+								   th:checked="${obj.gender == 'female'}" /> Female
 						</td>
 					</tr>
 					<tr>
-						
-						<td>Salary</td>
-						<td><input type="text" class="form-control" name="salary" th:value="${obj.salary}"/></td>
-						</tr>
-					
-										
+						<td>Email</td>
+						<td><input type="email" class="form-control" name="email" th:value="${obj.email}" /></td>
+
+					</tr>
+
+					<tr>
+						<td>SSN</td>
+						<td><input type="text" class="form-control" name="ssn" th:value="${obj.ssn}"/></td>
+					</tr>
+
 					<tr>
 						<td rowspan="2">Address</td >
-						<td rowspan="2"><textarea class="form-control" name="address" cols="25" rows="3"
-								th:text="${obj.address}"></textarea></td >
-						<td rowspan="2"></td >
+						<td rowspan="2"><textarea class="form-control" name="address" cols="25" rows="3" th:text="${obj.address}"></textarea></td>
+						<td rowspan="2"></td>
 						<td>Username</td>
-						<td><input type="text" class="form-control" name="username" th:value="${obj.username}" /></td>
+						<td><input type="text" class="form-control" name="username"  th:value="${obj.username}" /></td>
 					</tr>
 					<tr>
 						<td>Password</td>
 						<td><input type="password" class="form-control" name="password"  th:value="${obj.password}"/></td>
+					</tr>
+					<tr>
+						<td>State</td>
+						<td><input type="text" class="form-control" name="state"  th:value="${obj.state}" /></td>
+						<td width="50px"> &nbsp; </td >
+						<td>Confirm Password</td>
+						<td><input type="text" class="form-control" /></td>
+					</tr>
+					<tr>
+						<td>ZipCode</td>
+						<td><input type="tel" class="form-control" name="zip"   th:value="${obj.zip}"/></td>
 					</tr>
 				</table>
 				<input type="hidden" name="id" th:value="${obj.id}" />

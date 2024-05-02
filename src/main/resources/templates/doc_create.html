@@ -16,22 +16,26 @@
 			<form th:action="@{/doctor/save}" th:object="${doctor}">
 				<table class="tbl-form">
 					<tr>
-						<td>Name</td>
-						<td><input type="text" class="form-control" name="name" required /></td>
+						<td>First Name</td>
+						<td><input type="text" class="form-control" name="firstName" required /></td>
 					<td width="50px"> &nbsp; </td >
 						<td>Phone</td>
 						<td><input type="tel" class="form-control" name="phone"  required/></td>
 					</tr>
 					<tr>
-						<td>Email</td>
-						<td><input type="email" class="form-control" name="email" required /></td>
-					<td></td>
+						<td>Last Name</td>
+						<td><input type="text" class="form-control" name="lastName" required /></td>
+						<td></td>
 						<td>Gender</td>
 						<td>
 							<input type="radio" class="form-check-input" name="gender" value="male" /> Male
-							&nbsp; &nbsp; &nbsp; &nbsp;
 							<input type="radio" class="form-check-input" name="gender" value="female" /> Female
 						</td>
+					</tr>
+					<tr>
+						<td>Email</td>
+						<td><input type="email" class="form-control" name="email" required /></td>
+
 					</tr>
 
 					<tr>
@@ -50,13 +54,24 @@
 					<tr>
 						<td rowspan="2">Address</td >
 						<td rowspan="2"><textarea class="form-control" name="address" cols="25" rows="3" required></textarea></td>
-					<td rowspan="2"></td>
+						<td rowspan="2"></td>
 						<td>Username</td>
 						<td><input type="text" class="form-control" name="username" /></td>
 					</tr>
 					<tr>
 						<td>Password</td>
 						<td><input type="password" class="form-control" name="password" required/></td>
+					</tr>
+					<tr>
+						<td>State</td>
+						<td><input type="text" class="form-control" name="state" required /></td>
+						<td width="50px"> &nbsp; </td >
+						<td>Confirm Password</td>
+						<td><input type="text" class="form-control" required /></td>
+					</tr>
+					<tr>
+						<td>ZipCode</td>
+						<td><input type="tel" class="form-control" name="zip"  required/></td>
 					</tr>
 				</table>
 				<button type="submit" class="btn btn-success btn-submit">Save</button>

@@ -6,6 +6,8 @@ import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.doctor.model.*;
+import com.doctor.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,19 +16,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import com.doctor.model.Appointment;
-import com.doctor.model.Patient;
-import com.doctor.model.Prescription;
-import com.doctor.model.Review;
-import com.doctor.model.Slot;
-import com.doctor.repository.AppointmentRepository;
-import com.doctor.repository.DoctorRepository;
-import com.doctor.repository.NurseRepository;
-import com.doctor.repository.PatientRepository;
-import com.doctor.repository.PrescriptionRepository;
-import com.doctor.repository.ReviewRepository;
-import com.doctor.repository.SlotRepository;
 
 @RequestMapping("/patient")
 @Controller
@@ -52,6 +41,9 @@ public class PatientController {
 
 	@Autowired
 	ReviewRepository revRepo;
+
+	@Autowired
+	PaymentRepository payRepo;
 
 	@RequestMapping("/list")
 	public String home(Model model, HttpServletRequest request) {
@@ -136,7 +128,16 @@ public class PatientController {
 	public String signup(Appointment obj, RedirectAttributes rm, HttpServletRequest req) {
 		obj.setPatientId(req.getSession().getAttribute("id").toString());
 		obj.setStatus("Booked");
-		aptRepo.save(obj);
+		obj.setNotes("UnPaid");
+		Appointment appointment = aptRepo.save(obj);
+
+		Payment pmt = new Payment();
+		pmt.setAmount("50$");
+		pmt.setAppointmentId(appointment.getId());
+		pmt.setPatientId(obj.getPatientId());
+		pmt.setPatientName(repo.findById(obj.getPatientId()).get().getName());
+		pmt.setStatus("UnPaid");
+		payRepo.save(pmt);
 
 		Slot slot = slotRepo.findByDoctorIdAndDateAndTime(obj.getDoctorId(), obj.getDate(), obj.getTime());
 		slot.setStatus("Booked");
@@ -166,7 +167,7 @@ public class PatientController {
 
 		List<Appointment> newList = new ArrayList<>();
 		for (Appointment obj : list) {
-			obj.setDoctorId(docRepo.findById(obj.getDoctorId()).get().getName());
+			obj.setDoctorId(docRepo.findById(obj.getDoctorId()).get().getFirstName());
 			newList.add(obj);
 		}
 		model.addAttribute("datalist", newList);
@@ -179,7 +180,7 @@ public class PatientController {
 
 		List<Appointment> newList = new ArrayList<>();
 		for (Appointment obj : list) {
-			obj.setDoctorId(docRepo.findById(obj.getDoctorId()).get().getName());
+			obj.setDoctorId(docRepo.findById(obj.getDoctorId()).get().getFirstName());
 			obj.setPatientId(repo.findById(obj.getPatientId()).get().getName());
 			newList.add(obj);
 		}
